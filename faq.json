@@ -1,0 +1,31 @@
+{
+  "company": "Moon Bot",
+  "supportEmail": "support@northline.example",
+  "supportHours": "Mon to Fri, 9am to 6pm IST",
+  "faqs": [
+    {
+      "q": "How do I track my order?",
+      "a": "Open the tracking link in your shipping confirmation email, or go to Account > Orders and select the order. Tracking updates within 24 hours of dispatch."
+    },
+    {
+      "q": "What is your return policy?",
+      "a": "You can return unused items within 14 days of delivery. Start a return from Account > Orders > Return item. Refunds go back to the original payment method within 5 to 7 business days after we receive the item."
+    },
+    {
+      "q": "How long does delivery take?",
+      "a": "Standard delivery takes 3 to 6 business days. Express delivery takes 1 to 2 business days and is available in major cities."
+    },
+    {
+      "q": "Can I change or cancel my order?",
+      "a": "Orders can be changed or cancelled within 1 hour of placing them. After that, the order is packed, so you'll need to return it once it arrives."
+    },
+    {
+      "q": "Which payment methods do you accept?",
+      "a": "UPI, credit and debit cards, net banking, and cash on delivery for orders under 5,000 rupees."
+    },
+    {
+      "q": "I forgot my password. What now?",
+      "a": "Select Forgot password on the sign-in page and enter your email. The reset link is valid for 30 minutes. Check spam if it doesn't arrive."
+    }
+  ]
+}
