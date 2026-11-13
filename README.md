@@ -49,7 +49,7 @@ flowchart LR
 
 ### 2. Installation
 ```bash
-git clone https://github.com/rahaman1711/ai-customer-support-chatbot.git
+git clone https://github.com/rahaman1721/ai-customer-support-chatbot.git
 cd ai-customer-support-chatbot
 npm install
 ```
@@ -75,5 +75,5 @@ Open **[http://localhost:3000](http://localhost:3000)** in your browser!
 **Obaidhur Rahaman**  
 Full Stack Developer & Hybrid App Developer  
 - Portfolio: [rahaman1721.framer.website](https://rahaman1721.framer.website)  
-- GitHub: [@rahaman1711](https://github.com/rahaman1711)  
+- GitHub: [@rahaman1721](https://github.com/rahaman1721)  
 - LinkedIn: [obaidhur-rahaman-1721z](https://www.linkedin.com/in/obaidhur-rahaman-1721z)  
