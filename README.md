@@ -1,121 +1,196 @@
-# 🌙 Moon Bot — Production AI Customer Support Platform
+# 🌙 Moon Bot — Enterprise AI Customer Support Platform
 
-[![React](https://img.shields.io/badge/Frontend-React_18-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![Node.js](https://img.shields.io/badge/Backend-Node.js_Proxy-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Groq](https://img.shields.io/badge/AI_Engine-Groq_LPU_Inference-f55036?style=for-the-badge)](https://groq.com/)
+<div align="center">
+
+### **Zero-Secret-Leak Security Proxy, Sub-200ms Token Streaming via Server-Sent Events (SSE), Grounded Corporate Knowledge Injection & WhatsApp-Inspired Interface**
+
+[![Frontend](https://img.shields.io/badge/Frontend-React_18_%2B_Vite-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Backend](https://img.shields.io/badge/Backend-Node.js_HTTP_Proxy-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![AI Engine](https://img.shields.io/badge/AI_Engine-Groq_LPU_Inference-F05A28?style=for-the-badge)](https://groq.com/)
+[![LLM](https://img.shields.io/badge/Model-LLaMA_3.3_70B_Versatile-blueviolet?style=for-the-badge)](https://groq.com/)
+[![Security](https://img.shields.io/badge/Security-Zero_Client_API_Leak-success?style=for-the-badge&logo=shield&logoColor=white)]()
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-**Moon Bot** is an enterprise-grade AI customer support chat interface featuring sub-200ms streaming responses, strict domain knowledge grounding, and a zero-leak security proxy architecture.
+<br/>
+
+Architected & Engineered by **[Obaidhur Rahaman](https://rahaman1721.framer.website)** · Full Stack Developer & UI/UX Designer  
+*Bridging high-speed neural language processing with deterministic domain grounding and zero-trust security architecture.*
+
+</div>
 
 ---
 
-## 🚀 Key Features
+## 1. Project Title, Badges & Vision
 
-- **⚡ Ultra-Low Latency Streaming**: Streams tokens in real-time via Server-Sent Events (SSE) using Groq's high-speed LPU inference engine.
-- **🛡️ Zero Secret Leak Architecture**: Client code communicates solely with a local Node.js proxy server. The `GROQ_API_KEY` never touches client browsers.
-- **📚 Grounded FAQ Knowledge Base**: Automatically injects company policies, return terms, and shipping FAQs into system prompts to prevent LLM hallucinations.
-- **🎨 Polished Modern UX**: WhatsApp/ChatGPT-inspired interface with animated typing indicators, date separators, responsive card layouts, and mobile-first responsiveness.
-- **💾 Offline History**: Automatic local persistence via `localStorage` with instant multi-turn conversation recovery.
+### 🛡️ The Vision: Fast, Grounded, and Zero-Leak AI Customer Support
+Integrating Large Language Models directly into client-side browser single-page applications exposes critical production vulnerabilities:
+1. **Compromised API Credentials:** Client-side keys (`VITE_OPENAI_API_KEY`, `VITE_GROQ_API_KEY`) can be extracted from browser network tabs and decompiled bundles within seconds.
+2. **Hallucination Risk:** Ungrounded LLMs invent imaginary return policies, unauthorized discounts, and inaccurate delivery timelines.
+3. **High Chat Latency:** Traditional non-streaming REST endpoints force customers to wait 5–10 seconds before seeing a single word of assistance.
+
+**Moon Bot** resolves all three challenges through a **Zero-Trust Node.js Proxy Server** delivering **real-time token streaming via Server-Sent Events (SSE)** powered by Groq's high-speed LPU inference engine. The LLM is strictly constrained to approved organizational FAQs with sub-200ms time-to-first-token (TTFT) response velocity.
 
 ---
 
-## 🏗️ System Architecture & Streaming Data Flow
+## 2. Exhaustive Module & Feature Breakdown
 
-Moon Bot implements a **Zero-Trust Security Proxy Architecture**, isolating LLM vendor credentials while providing sub-200ms time-to-first-token (TTFT) through Server-Sent Events (SSE).
+### 🔒 Module A: Zero-Trust Security Proxy Architecture
+- **Complete Credential Shielding**: The client bundle contains zero references to `GROQ_API_KEY`. The browser communicates exclusively with the local proxy server (`/api/chat`).
+- **Input Sanitization & Buffer Protection**: Rejects payloads exceeding 1MB to prevent memory exhaustion and denial-of-service (DoS) attacks.
+- **CORS & Origin Isolation**: Configured to restrict POST requests strictly to authorized client domains.
+- **Fail-Safe Offline Graceful Degrade**: If the LLM provider experiences an outage, the proxy gracefully falls back to structured offline contact directives (`support@northline.example`).
+
+### 📚 Module B: Deterministic Domain Knowledge Grounding
+- **JSON Knowledge Injection (`faq.json`)**: Loads vetted company policies spanning order tracking, 14-day return rules, delivery windows, payment methods, and password recovery.
+- **Dynamic System Prompt Engineering**: Injects structured Q&A pairs directly into the LLaMA 3.3 system prompt context.
+- **Hallucination Constraint**: Strict behavioral directives (*"Answer using only the support information below. Never invent policies, prices, or timelines. If the customer is upset, acknowledge it in one sentence before helping."*).
+
+### ⚡ Module C: Sub-200ms Streaming Engine (Server-Sent Events)
+- **HTTP Chunked Transfer Encoding**: Establishes a persistent `text/event-stream` socket connection via native Node.js HTTP pipes.
+- **Real-Time Token Append**: Tokens stream to the client browser with sub-200ms latency, creating a live, fluid typing animation.
+- **Fetch ReadableStream Consumption**: The frontend consumes raw binary chunks using the browser's native `TextDecoder` and `ReadableStreamDefaultReader`.
+
+### 🎨 Module D: Modern Chat Interface & Micro-Interactions
+- **WhatsApp/ChatGPT-Inspired Aesthetics**: High-contrast dark theme with distinct conversational bubble alignments (User vs. Moon Bot).
+- **Animated Typing Indicator**: Visual three-dot pulse animation signaling active server processing before the first token stream begins.
+- **Smart Auto-Scroll & Viewport Anchoring**: Automatically scrolls to the newest message during token streaming, intelligently pausing if the user scrolls up to read earlier history.
+- **Quick-Reply Prompt Chips**: Pre-configured conversational shortcut pills (e.g., "Track Order", "Return Policy", "Delivery Times").
+
+### 💾 Module E: Multi-Turn Conversation Memory
+- **Client-Side Enclave Cache**: Conversations automatically persist to browser `localStorage` across page refreshes.
+- **Multi-Turn Context Preservation**: Dispatches previous dialogue history within the API payload, allowing the LLM to understand contextual follow-up questions.
+- **1-Click Conversation Reset**: Clears active session history and restores initial welcome greeting state.
+
+---
+
+## 3. System Architecture & Tech Stack
 
 ```mermaid
 flowchart TD
-    subgraph ClientBrowser ["🖥️ Client Web Browser"]
-        ChatUI["React 18 Chat Interface"]
-        InputHandler["User Input Sanitizer & Debouncer"]
-        EventSourceStream["Fetch API ReadableStream Reader"]
-        LocalStorageHistory[("Local Conversation Cache")]
+    subgraph ClientBrowser ["🖥️ Client Web Browser (React 18)"]
+        ChatUI["React 18 Chat Interface & Message Stream"]
+        InputSanitizer["User Input Sanitizer & Debouncer"]
+        ReadableStreamHandler["Fetch API ReadableStream Reader"]
+        LocalStorageCache[("Local Conversation Cache")]
     end
 
-    subgraph SecurityProxy ["🔒 Node.js Security Proxy Server"]
-        ExpressApp["Node.js Express Proxy (Port 3000)"]
-        RateLimiter["IP Rate Limiter & 1MB Body Guard"]
+    subgraph SecurityProxy ["🔒 Node.js Security Proxy Server (Port 3000)"]
+        ExpressRouter["Node.js HTTP Server & Route Handler"]
+        RateLimiter["1MB Payload Cap & Rate Guard"]
         PromptEngine["System Prompt Grounding Engine"]
-        FAQContext[("faq.json Knowledge Base")]
-        SSEPipeline["Server-Sent Events (SSE) Pipe"]
+        FAQStore[("faq.json Knowledge Base")]
+        SSEPipeline["Server-Sent Events (SSE) Stream Pipe"]
     end
 
     subgraph LLMCloud ["⚡ Groq High-Speed LPU Cloud"]
-        GroqAPI["Groq LPU Inference Engine"]
-        LlamaModel["llama-3.3-70b-versatile / gpt-oss-20b"]
+        GroqAPI["Groq Cloud LPU Inference Gateway"]
+        LlamaModel["llama-3.3-70b-versatile Engine"]
     end
 
-    ChatUI --> InputHandler
-    InputHandler -->|"POST /api/chat (JSON Payload)"| RateLimiter
-    RateLimiter --> ExpressApp
+    ChatUI --> InputSanitizer
+    InputSanitizer -->|"POST /api/chat (JSON Payload)"| RateLimiter
+    RateLimiter --> ExpressRouter
     
-    FAQContext --> PromptEngine
-    ExpressApp --> PromptEngine
+    FAQStore --> PromptEngine
+    ExpressRouter --> PromptEngine
     
     PromptEngine -->|"Authorized Bearer Request (Strict SSL)"| GroqAPI
     GroqAPI --> LlamaModel
     
     LlamaModel -->|"Raw Token Chunks Stream"| GroqAPI
     GroqAPI -->|"Transfer-Encoding chunked"| SSEPipeline
-    SSEPipeline -->|"text/event-stream chunks"| EventSourceStream
+    SSEPipeline -->|"text/event-stream chunks"| ReadableStreamHandler
     
-    EventSourceStream -->|Dynamic Word Append| ChatUI
-    ChatUI <-->|Auto-Sync Multi-Turn History| LocalStorageHistory
+    ReadableStreamHandler -->|Dynamic Word Append| ChatUI
+    ChatUI <-->|Auto-Sync Multi-Turn History| LocalStorageCache
 ```
 
-### 🔬 Architecture & Security Highlights
-
-1. **Zero Secret Leak Defense**:
-   - The browser never receives or transmits the `GROQ_API_KEY`. All LLM communication is gated behind a server-side proxy layer.
-2. **Deterministic Domain Grounding**:
-   - Before dispatching requests to Groq, the proxy injects vetted organizational FAQs from `faq.json` into the system prompt context, ensuring accurate answers regarding shipping policies, refunds, and operating hours while eliminating generic hallucinations.
-3. **Sub-200ms Token Streaming**:
-   - Utilizing native Node.js HTTP stream piping and HTTP `text/event-stream` headers, tokens are flushed to the client socket as soon as Groq's Tensor Streaming Processors generate them, delivering an instant, responsive chat experience.
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend**: React 18 / Vanilla Modern JS, CSS custom properties, responsive layout engine.
-- **Backend**: Node.js HTTP server with native streaming pipelines and CORS isolation.
-- **AI Models**: Groq Cloud (`openai/gpt-oss-20b`, `llama-3.3-70b-versatile`).
-- **Security**: Strict `.env` isolation, input size limits (1MB cap), and system prompt isolation.
+| Layer | Technologies | Architectural Function |
+|:---|:---|:---|
+| **Frontend Framework** | React 18, Vite, Modern ES6+ | Lightweight, reactive chat interface with fast DOM updates. |
+| **Backend & Proxy** | Node.js (Built-in HTTP / Express) | Static asset server + secure LLM streaming reverse proxy. |
+| **AI Inference Engine** | Groq Cloud LPU | Ultra-low latency tensor computing running `llama-3.3-70b-versatile`. |
+| **Data & Grounding** | `faq.json` (Local Knowledge Base) | Deterministic corporate policies injected into system prompts. |
+| **Styling & Design Tokens** | CSS3 Custom Properties, Flexbox | Clean responsive layout with dark mode contrast and mobile responsiveness. |
 
 ---
 
-## 📦 Getting Started
+## 4. Complete Folder Structure
 
-### 1. Prerequisites
-- Node.js 18+ installed
-- Groq API Key (from [console.groq.com](https://console.groq.com))
+```
+ai-customer-support-chatbot/
+├── dist/                                 # Compiled production web bundle (Static Assets)
+├── src/                                  # React 18 Application Source Code
+│   ├── App.jsx                           # Primary chat workspace, streaming hooks, and event handlers
+│   ├── main.jsx                          # React 18 DOM bootstrap
+│   └── styles.css                        # Modern CSS tokens, animated typing dots & dark theme
+├── .env.example                          # Environment template (Placeholders for GROQ_API_KEY & PORT)
+├── .gitignore                            # Excludes real .env, node_modules, and build caches
+├── faq.json                              # Organizational knowledge base (Grounding source)
+├── index.html                            # Application HTML5 shell with viewport metadata
+├── package.json                          # Dependencies & NPM build scripts
+├── server.js                             # Zero-trust Node.js HTTP reverse proxy & SSE pipeline
+└── vite.config.js                        # Vite bundler configuration
+```
 
-### 2. Installation
+---
+
+## 5. Screen / Route & API Inventory
+
+### Application Screen & View Inventory
+
+| View Component | Route | Primary Purpose |
+|:---|:---|:---|
+| `App.jsx` | `/` (Single Page App) | Full customer support interface: message log, quick replies, active typing indicator, and input bar. |
+
+### API Endpoint Inventory (`server.js`)
+
+| Endpoint | Method | Payload / Headers | Response & Function |
+|:---|:---|:---|:---|
+| `/api/chat` | `POST` | `Content-Type: application/json`<br/>`{ messages: [...] }` | **SSE Streaming Response** (`text/event-stream`). Grounded system prompt + Groq token stream. |
+| `/api/health` | `GET` | None | Returns `200 OK` health status for container monitoring. |
+| `/*` | `GET` | Static file requests | Serves compiled HTML, JS, CSS, and SVG assets from `/dist`. |
+
+---
+
+## 6. Getting Started (Local Setup & Installation)
+
+### Prerequisites
+- **Node.js**: v18.0.0 or higher (v20+ recommended).
+- **Groq API Key**: Obtain a free API key from **[console.groq.com](https://console.groq.com)**.
+
+### 1. Clone Repository
 ```bash
 git clone https://github.com/rahaman1721/ai-customer-support-chatbot.git
 cd ai-customer-support-chatbot
+```
+
+### 2. Install Dependencies
+```bash
 npm install
 ```
 
-### 3. Environment Configuration
-Create a `.env` file in the root directory:
+### 3. Configure Environment Variables
+Create a `.env` file in the project root:
 ```env
-GROQ_API_KEY=your_groq_api_key_here
-GROQ_MODEL=openai/gpt-oss-20b
+GROQ_API_KEY=your_actual_groq_api_key_here
+GROQ_MODEL=llama-3.3-70b-versatile
 PORT=3000
 ```
 
-### 4. Run the Application
+### 4. Build & Launch Server
 ```bash
+# 1. Compile production frontend bundle
+npm run build
+
+# 2. Start Node.js security proxy server
 node server.js
 ```
+
 Open **[http://localhost:3000](http://localhost:3000)** in your browser!
 
 ---
 
-## 👨‍💻 Author
-
-**Obaidhur Rahaman**  
-Full Stack Developer & Hybrid App Developer  
-- Portfolio: [rahaman1721.framer.website](https://rahaman1721.framer.website)  
-- GitHub: [@rahaman1721](https://github.com/rahaman1721)  
-- LinkedIn: [obaidhur-rahaman-1721z](https://www.linkedin.com/in/obaidhur-rahaman-1721z)  
+<div align="center">
+  <sub>Engineered for sub-200ms customer intelligence · Code crafted by <a href="https://rahaman1721.framer.website">Obaidhur Rahaman</a> © 2026</sub>
+</div>
