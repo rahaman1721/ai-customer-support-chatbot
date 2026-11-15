@@ -46,18 +46,18 @@ flowchart TD
     end
 
     ChatUI --> InputHandler
-    InputHandler -->|POST /api/chat (JSON Payload)| RateLimiter
+    InputHandler -->|"POST /api/chat (JSON Payload)"| RateLimiter
     RateLimiter --> ExpressApp
     
     FAQContext --> PromptEngine
     ExpressApp --> PromptEngine
     
-    PromptEngine -->|Authorized Bearer Request (Strict SSL)| GroqAPI
+    PromptEngine -->|"Authorized Bearer Request (Strict SSL)"| GroqAPI
     GroqAPI --> LlamaModel
     
-    LlamaModel -->|Raw Token Chunks Stream| GroqAPI
-    GroqAPI -->|Transfer-Encoding: chunked| SSEPipeline
-    SSEPipeline -->|text/event-stream chunks| EventSourceStream
+    LlamaModel -->|"Raw Token Chunks Stream"| GroqAPI
+    GroqAPI -->|"Transfer-Encoding chunked"| SSEPipeline
+    SSEPipeline -->|"text/event-stream chunks"| EventSourceStream
     
     EventSourceStream -->|Dynamic Word Append| ChatUI
     ChatUI <-->|Auto-Sync Multi-Turn History| LocalStorageHistory
