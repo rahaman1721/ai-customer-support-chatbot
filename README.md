@@ -18,13 +18,6 @@ Architected & Engineered by **[Obaidhur Rahaman](https://rahaman1721.framer.webs
 
 </div>
 
-<div align="center">
-  <br/>
-  <img src="docs/screenshots/01-moonbot-support-chat.png" alt="Moon Bot WhatsApp-Style Customer Support Interface" width="620" style="border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.2);" />
-  <p><sub><b>Moon Bot Interface</b> — Sub-200ms token streaming, suggestion quick-actions, and zero-client-leak API proxy</sub></p>
-  <br/>
-</div>
-
 ---
 
 ## 1. Project Title, Badges & Vision
