@@ -16,6 +16,12 @@
 Architected & Engineered by **[Obaidhur Rahaman](https://rahaman1721.framer.website)** · Full Stack Developer & UI/UX Designer  
 *Bridging high-speed neural language processing with deterministic domain grounding and zero-trust security architecture.*
 
+<br/>
+
+<img src="docs/screenshots/01-moonbot-preview.png" alt="Moon Bot Production Interface" width="100%" />
+
+*Figure 1: Authentic Moon Bot interface showcasing the Welcome & FAQ screen (left) alongside the live streaming conversational chat with markdown formatting and grounded support policies (right).*
+
 </div>
 
 ---
